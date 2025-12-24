@@ -1,0 +1,247 @@
+:root {
+    --sidebar-bg: #1e293b;
+    --sidebar-text: #e2e8f0;
+    --main-bg: #f8fafc;
+    --accent-color: #3b82f6;
+    --border-color: #334155;
+    --card-bg: #334155;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sidebar {
+    width: 350px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.logo {
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-box {
+    padding: 15px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--main-bg);
+    color: #333;
+    box-sizing: border-box;
+}
+
+.details-panel {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(0,0,0,0.2);
+    max-height: 300px; /* 限制高度，避免遮挡列表 */
+    overflow-y: auto; /* 超出部分滚动 */
+    position: relative; /* 新增：用于定位关闭按钮 */
+}
+
+/* 新增：关闭按钮样式 */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+.details-panel h2 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: var(--accent-color);
+    padding-right: 20px; /* 避免标题被关闭按钮遮挡 */
+}
+
+.detail-meta {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.doi-link {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.doi-link:hover {
+    text-decoration: underline;
+}
+
+.detail-content {
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.detail-section {
+    margin-bottom: 10px;
+}
+
+.detail-section strong {
+    display: block;
+    color: #cbd5e1;
+    margin-bottom: 4px;
+}
+
+.detail-section ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #e2e8f0;
+}
+
+.paper-list-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.paper-list-container h3 {
+    padding: 10px 15px;
+    margin: 0;
+    font-size: 0.9rem;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.paper-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 10px 10px 10px;
+}
+
+.paper-item {
+    padding: 10px;
+    background-color: var(--card-bg);
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+/* 论文标题样式 - 加粗且字体稍大 */
+.paper-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+/* 作者列表样式 - 正常字体，颜色稍浅 */
+.paper-authors {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+
+
+.paper-item:hover {
+    background-color: #475569;
+    transform: translateX(2px);
+}
+
+.paper-item.active {
+    border-left-color: var(--accent-color);
+    background-color: #475569;
+}
+
+.main-content {
+    flex: 1;
+    background-color: var(--main-bg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.chart-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 1);
+    padding: 10px;
+    
+    box-shadow: 0 2px 10px rgba(0,0,0,1);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+
+
+
+
+
+
+

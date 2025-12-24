@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMI 2024 Knowledge Graph</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h1 class="logo">TMI 2024 期刊图谱</h1>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索论文、作者、方法..." autocomplete="off">
+            </div>
+
+            <div class="details-panel" id="detailsPanel" style="display: none; position: relative;">
+                <!-- 新增：关闭按钮 -->
+                <span class="close-btn" id="closeDetailsBtn">&times;</span>
+                
+                <h2 id="detailTitle">论文标题</h2>
+                <div class="detail-meta">
+                    <span id="detailAuthors">作者列表</span>
+                    <a href="#" id="detailDoi" target="_blank" class="doi-link">DOI</a>
+                </div>
+                <div class="detail-content">
+                    <div class="detail-section">
+                        <strong>摘要/类别：</strong>
+                        <span id="detailCategory"></span>
+                    </div>
+                    <div class="detail-section">
+                        <strong>创新点：</strong>
+                        <ul id="detailInnovations"></ul>
+                    </div>
+                    <div class="detail-section">
+                        <strong>方法：</strong>
+                        <span id="detailMethods"></span>
+                    </div>
+                     <div class="detail-section">
+                        <strong>指标：</strong>
+                        <span id="detailMetrics"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-list-container">
+                <h3>相关论文列表</h3>
+                <div id="paperList" class="paper-list">
+                    <!-- 论文列表项 -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="graphChart" class="chart-container"></div>
+        </main>
+    </div>
+
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="./charts.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
+
+
+
